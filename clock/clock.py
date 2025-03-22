@@ -2,6 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime
 import pytz
 import requests
+import os
 
 def get_is_night(latitude, longitude):
     # Sunrise-Sunset API URL
@@ -77,8 +78,8 @@ def save_clock_image(file_path, width=32, height=32, font_path=None, font_size=1
     Generates an image displaying the current date and time and saves it to the specified path.
     """
 
-    # set fonts
-    font_path = "/Users/brv/Documents/python3-idotmatrix-client/clock/fonts/Pixolletta8px.ttf"
+    # set fonts using relative path
+    font_path = os.path.join(os.path.dirname(__file__), "fonts", "Pixolletta8px.ttf")
 
     # Create a blank image
     image = Image.new("RGB", (width, height), color=bg_color)
@@ -99,15 +100,14 @@ def save_clock_image(file_path, width=32, height=32, font_path=None, font_size=1
     draw.text((0, 12), current_date, fill=text_color, font=font)
     draw.text((0, 23), current_time, fill=text_color, font=font)
 
-  	# Load the sun or moon image
-    sun_image_path = '/Users/brv/Documents/python3-idotmatrix-client/clock/sun.png'
-    moon_image_path = '/Users/brv/Documents/python3-idotmatrix-client/clock/moon.png'
+    # Load the sun or moon image using relative paths
+    sun_image_path = os.path.join(os.path.dirname(__file__), "sun.png")
+    moon_image_path = os.path.join(os.path.dirname(__file__), "moon.png")
 
     latitude = 40.036217
     longitude = -75.513809
     is_night = get_is_night(latitude, longitude)
     #is_cloudy = get_is_cloudy(latitude, longitude)
-
 
     if is_night:
         moon_image = Image.open(moon_image_path)
