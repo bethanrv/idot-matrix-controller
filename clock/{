@@ -1,0 +1,28 @@
+{
+  "pack": {
+    "pack_format": 15,
+    "description": "A datapack that allows crafting of slimeballs in Minecraft 1.21.1."
+  },
+  "data": {
+    "slimeball_crafting": {
+      "type": "minecraft:crafting_shaped",
+      "pattern": [
+        "   ",
+        " SCS",
+        "   "
+      ],
+      "key": {
+        "S": {
+          "item": "minecraft:sugar"
+        },
+        "C": {
+          "item": "minecraft:cactus"
+        }
+      },
+      "result": {
+        "item": "minecraft:slime_ball",
+        "count": 1
+      }
+    }
+  }
+}

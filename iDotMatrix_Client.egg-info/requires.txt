@@ -1,0 +1,5 @@
+asyncio
+idotmatrix==0.0.7
+bleak
+pillow
+argparse
